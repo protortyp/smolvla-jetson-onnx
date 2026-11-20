@@ -1,0 +1,127 @@
+{
+  "model_repo_id": "lerobot/smolvla_base",
+  "model_revision": "5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6",
+  "ref_cache_path": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/datasets/held_out/smolvla_ref_batches.pt",
+  "num_batches": 8,
+  "batch_size": 1,
+  "seeds_used": [
+    11,
+    23,
+    37,
+    41,
+    53,
+    111,
+    123,
+    137
+  ],
+  "onnx_eval": {
+    "backend": "onnx_fp32_cpu",
+    "onnx_dir": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/artifacts/smolvla_onnx_fp32",
+    "onnx_files": {
+      "vision": "smolvla_vision_encoder.onnx",
+      "prefix": "smolvla_vlm_prefix.onnx",
+      "expert": "smolvla_action_expert_step.onnx"
+    },
+    "precision": "fp32",
+    "device": "cpu",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "io_binding": false,
+    "warmup_runs": 1,
+    "timed_runs": 3,
+    "latency": {
+      "mean_ms": 3790.801,
+      "std_ms": 774.212,
+      "p50_ms": 4280.226,
+      "p95_ms": 4382.887,
+      "min_ms": 2697.882,
+      "max_ms": 4394.294
+    },
+    "breakdown_ms": {
+      "vision_mean_ms": 2444.404,
+      "prefix_mean_ms": 337.221,
+      "expert_10steps_mean_ms": 1009.176,
+      "expert_per_step_mean_ms": 100.918
+    },
+    "throughput": {
+      "chunks_per_sec": 0.264,
+      "control_actions_per_sec": 13.2
+    },
+    "memory": {
+      "rss_start_mb": 694.27,
+      "rss_peak_mb": 3184.72,
+      "rss_delta_mb": 2490.45,
+      "process_ru_maxrss_mb": 3180.68,
+      "nvml_gpu_start_mb": null,
+      "nvml_gpu_peak_mb": null,
+      "nvml_gpu_delta_mb": null,
+      "rss_after_load_mb": 2382.93,
+      "onnx_disk_size_mb": 1501.61
+    },
+    "accuracy_vs_fp32_ref": {
+      "vision_image_embeddings": {
+        "max_abs_err": 0.005828857421875,
+        "rel_max_abs_err": 2.4585205112692915e-06,
+        "mae": 0.00023772608280788355,
+        "rmse": 0.000333265562147093,
+        "cosine_sim": 0.9999999999971095,
+        "min_cosine_sim": 0.9999999999969146
+      },
+      "prefix_past_keys": {
+        "max_abs_err": 5.316734313964844e-05,
+        "rel_max_abs_err": 2.9240330445629977e-06,
+        "mae": 1.6548575070067917e-06,
+        "rmse": 2.4088989545440282e-06,
+        "cosine_sim": 0.9999999999990696,
+        "min_cosine_sim": 0.9999999999989976
+      },
+      "prefix_past_values": {
+        "max_abs_err": 2.6941299438476562e-05,
+        "rel_max_abs_err": 5.1908315032207046e-06,
+        "mae": 1.103749531649188e-06,
+        "rmse": 1.6583700666206165e-06,
+        "cosine_sim": 0.9999999999969286,
+        "min_cosine_sim": 0.9999999999967234
+      },
+      "expert_single_step_v_t": {
+        "max_abs_err": 2.771615982055664e-06,
+        "rel_max_abs_err": 7.141427540956778e-07,
+        "mae": 3.832804941339418e-07,
+        "rmse": 4.952431532518785e-07,
+        "cosine_sim": 0.9999999999998821,
+        "min_cosine_sim": 0.9999999999998682
+      },
+      "actions_10step": {
+        "max_abs_err": 4.284083843231201e-06,
+        "rel_max_abs_err": 2.1051826050164804e-06,
+        "mae": 1.514570976723917e-07,
+        "rmse": 3.214955226708987e-07,
+        "cosine_sim": 0.999999999999172,
+        "min_cosine_sim": 0.9999999999978421
+      },
+      "prefix_pad_masks_exact_match": true
+    },
+    "acceptance": {
+      "thresholds": {
+        "actions_max_abs_err": 0.0001,
+        "actions_cosine_sim": 0.99999
+      },
+      "passed_accuracy": true,
+      "jetson_orin_nano_8gb_ok": true,
+      "jetson_mem_budget_mb": 8192.0,
+      "jetson_safe_limit_mb": 6144.0,
+      "onnx_disk_size_mb": 1501.61,
+      "est_jetson_total_mb": 2636.22
+    }
+  },
+  "baseline_comparison": {
+    "pytorch_fp32_cpu": {
+      "baseline_mean_ms": 1979.846,
+      "onnx_mean_ms": 3790.801,
+      "speedup_vs_baseline": 0.522,
+      "rss_reduction_mb": 2762.78,
+      "vram_reduction_mb": null
+    }
+  }
+}

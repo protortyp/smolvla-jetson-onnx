@@ -1,0 +1,40 @@
+{
+  "onnx_dir": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/artifacts/smolvla_onnx_fp32",
+  "device": "cuda",
+  "providers": [
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "zero_copy_gpu_euler": true,
+  "warmup": 5,
+  "runs": 20,
+  "device_compute_ms": {
+    "mean": 129.631,
+    "p50": 129.435,
+    "p95": 131.699,
+    "min": 126.92
+  },
+  "total_e2e_ms": {
+    "mean": 130.779,
+    "p50": 130.446,
+    "p95": 132.771,
+    "min": 128.185
+  },
+  "breakdown_mean_ms": {
+    "h2d_ms": 1.101,
+    "vision_ms": 65.628,
+    "prefix_ms": 9.511,
+    "expert_10steps_ms": 54.491,
+    "d2h_ms": 0.047
+  },
+  "throughput": {
+    "chunks_per_sec_e2e": 7.65,
+    "control_actions_per_sec_e2e": 382.3
+  },
+  "output_shape": [
+    1,
+    50,
+    32
+  ],
+  "output_finite": true
+}

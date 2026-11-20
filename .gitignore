@@ -1,0 +1,17 @@
+.venv/
+.venv-robotics/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.env
+artifacts/
+datasets/
+*.onnx
+*.onnx.data
+*.engine
+*.safetensors
+*.pt
+dist/
+build/
+*.egg-info/

@@ -1,0 +1,135 @@
+{
+  "model_repo_id": "lerobot/smolvla_base",
+  "model_revision": "5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6",
+  "ref_cache_path": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/datasets/held_out/smolvla_ref_batches.pt",
+  "num_batches": 8,
+  "batch_size": 1,
+  "seeds_used": [
+    11,
+    23,
+    37,
+    41,
+    53,
+    111,
+    123,
+    137
+  ],
+  "onnx_eval": {
+    "backend": "onnx_fp32_cuda",
+    "onnx_dir": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/artifacts/smolvla_onnx_fp32",
+    "onnx_files": {
+      "vision": "smolvla_vision_encoder.onnx",
+      "prefix": "smolvla_vlm_prefix.onnx",
+      "expert": "smolvla_action_expert_step.onnx"
+    },
+    "precision": "fp32",
+    "device": "cuda",
+    "providers": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "io_binding": false,
+    "warmup_runs": 5,
+    "timed_runs": 20,
+    "latency": {
+      "mean_ms": 146.435,
+      "std_ms": 20.285,
+      "p50_ms": 135.485,
+      "p95_ms": 189.233,
+      "min_ms": 132.287,
+      "max_ms": 196.991
+    },
+    "breakdown_ms": {
+      "vision_mean_ms": 64.287,
+      "prefix_mean_ms": 10.87,
+      "expert_10steps_mean_ms": 71.278,
+      "expert_per_step_mean_ms": 7.128
+    },
+    "throughput": {
+      "chunks_per_sec": 6.829,
+      "control_actions_per_sec": 341.45
+    },
+    "memory": {
+      "rss_start_mb": 698.16,
+      "rss_peak_mb": 1638.61,
+      "rss_delta_mb": 940.45,
+      "process_ru_maxrss_mb": 1798.98,
+      "nvml_gpu_start_mb": 0.0,
+      "nvml_gpu_peak_mb": 2882.0,
+      "nvml_gpu_delta_mb": 2882.0,
+      "rss_after_load_mb": 1506.28,
+      "onnx_disk_size_mb": 1501.61
+    },
+    "accuracy_vs_fp32_ref": {
+      "vision_image_embeddings": {
+        "max_abs_err": 0.0052490234375,
+        "rel_max_abs_err": 2.3518012445732185e-06,
+        "mae": 0.00022485644605178267,
+        "rmse": 0.0003122956148472922,
+        "cosine_sim": 0.9999999999974574,
+        "min_cosine_sim": 0.9999999999972574
+      },
+      "prefix_past_keys": {
+        "max_abs_err": 8.0108642578125e-05,
+        "rel_max_abs_err": 4.40571795055232e-06,
+        "mae": 1.5120844530568208e-06,
+        "rmse": 2.2354162061203913e-06,
+        "cosine_sim": 0.9999999999991972,
+        "min_cosine_sim": 0.9999999999991478
+      },
+      "prefix_past_values": {
+        "max_abs_err": 3.516674041748047e-05,
+        "rel_max_abs_err": 6.907446677087311e-06,
+        "mae": 1.0375920812248485e-06,
+        "rmse": 1.5733916596509941e-06,
+        "cosine_sim": 0.9999999999972347,
+        "min_cosine_sim": 0.9999999999970364
+      },
+      "expert_single_step_v_t": {
+        "max_abs_err": 1.9073486328125e-06,
+        "rel_max_abs_err": 4.898722284636707e-07,
+        "mae": 2.8869908419437706e-07,
+        "rmse": 3.7238378440175103e-07,
+        "cosine_sim": 0.9999999999999349,
+        "min_cosine_sim": 0.9999999999999315
+      },
+      "actions_10step": {
+        "max_abs_err": 3.7420541048049927e-06,
+        "rel_max_abs_err": 2.2732216848140592e-06,
+        "mae": 1.07725873021991e-07,
+        "rmse": 2.3876904155981946e-07,
+        "cosine_sim": 0.9999999999994449,
+        "min_cosine_sim": 0.999999999997344
+      },
+      "prefix_pad_masks_exact_match": true
+    },
+    "acceptance": {
+      "thresholds": {
+        "actions_max_abs_err": 0.0001,
+        "actions_cosine_sim": 0.99999
+      },
+      "passed_accuracy": true,
+      "jetson_orin_nano_8gb_ok": true,
+      "jetson_mem_budget_mb": 8192.0,
+      "jetson_safe_limit_mb": 6144.0,
+      "onnx_disk_size_mb": 1501.61,
+      "est_jetson_total_mb": 2734.11
+    }
+  },
+  "baseline_comparison": {
+    "pytorch_fp32_cuda": {
+      "baseline_mean_ms": 243.054,
+      "onnx_mean_ms": 146.435,
+      "speedup_vs_baseline": 1.66,
+      "rss_reduction_mb": 3209.88,
+      "vram_reduction_mb": -931.48
+    },
+    "pytorch_bf16_cuda": {
+      "baseline_mean_ms": 199.405,
+      "onnx_mean_ms": 146.435,
+      "speedup_vs_baseline": 1.362,
+      "rss_reduction_mb": 3952.31,
+      "vram_reduction_mb": -1847.67
+    }
+  }
+}

@@ -1,0 +1,18 @@
+smolvla-jetson-onnx
+Copyright 2026 Christian Engel
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository includes ONNX export, evaluation, and PyTorch-free inference
+code derived from the following Apache-2.0 licensed upstream works:
+
+1. lerobot/smolvla_base
+   - Source: https://huggingface.co/lerobot/smolvla_base
+   - Pinned revision: 5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6
+   - Reference implementation: https://github.com/huggingface/lerobot
+   - Paper: "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics" (arXiv:2506.01844)
+   - License: Apache License, Version 2.0
+
+2. HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+   - Source: https://huggingface.co/HuggingFaceTB/SmolVLM2-500M-Video-Instruct
+   - Pinned revision: 4cde9d208e19519c36917aa170fffc7e381aa0ad
+   - License: Apache License, Version 2.0

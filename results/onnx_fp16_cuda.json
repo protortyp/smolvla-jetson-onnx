@@ -1,0 +1,134 @@
+{
+  "model_repo_id": "lerobot/smolvla_base",
+  "model_revision": "5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6",
+  "ref_cache_path": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/datasets/held_out/smolvla_ref_batches.pt",
+  "num_batches": 8,
+  "batch_size": 1,
+  "seeds_used": [
+    11,
+    23,
+    37,
+    41,
+    53,
+    111,
+    123,
+    137
+  ],
+  "onnx_eval": {
+    "backend": "onnx_fp16_cuda",
+    "onnx_dir": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/artifacts/smolvla_onnx_fp16",
+    "onnx_files": {
+      "vision": "smolvla_vision_encoder.onnx",
+      "prefix": "smolvla_vlm_prefix.onnx",
+      "expert": "smolvla_action_expert_step.onnx"
+    },
+    "precision": "fp16",
+    "device": "cuda",
+    "providers": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "io_binding": false,
+    "warmup_runs": 5,
+    "timed_runs": 20,
+    "latency": {
+      "mean_ms": 85.983,
+      "std_ms": 2.812,
+      "p50_ms": 86.088,
+      "p95_ms": 89.557,
+      "min_ms": 81.226,
+      "max_ms": 89.76
+    },
+    "breakdown_ms": {
+      "vision_mean_ms": 35.109,
+      "prefix_mean_ms": 5.259,
+      "expert_10steps_mean_ms": 45.614,
+      "expert_per_step_mean_ms": 4.561
+    },
+    "throughput": {
+      "chunks_per_sec": 11.63,
+      "control_actions_per_sec": 581.5
+    },
+    "memory": {
+      "rss_start_mb": 698.22,
+      "rss_peak_mb": 1698.5,
+      "rss_delta_mb": 1000.27,
+      "process_ru_maxrss_mb": 1694.18,
+      "nvml_gpu_start_mb": 0.0,
+      "nvml_gpu_peak_mb": 2126.0,
+      "nvml_gpu_delta_mb": 2126.0,
+      "rss_after_load_mb": 1163.08,
+      "onnx_disk_size_mb": 751.57
+    },
+    "accuracy_vs_fp32_ref": {
+      "vision_image_embeddings": {
+        "max_abs_err": 3.67138671875,
+        "rel_max_abs_err": 0.0016261338279918822,
+        "mae": 0.17230537898864728,
+        "rmse": 0.24057206647144164,
+        "cosine_sim": 0.9999984922392968,
+        "min_cosine_sim": 0.9999983826396353
+      },
+      "prefix_past_keys": {
+        "max_abs_err": 0.18778634071350098,
+        "rel_max_abs_err": 0.01033034795812885,
+        "mae": 0.0032977001613884328,
+        "rmse": 0.007593018960722323,
+        "cosine_sim": 0.9999906639533004,
+        "min_cosine_sim": 0.9999903777765357
+      },
+      "prefix_past_values": {
+        "max_abs_err": 0.02817559242248535,
+        "rel_max_abs_err": 0.006033905096690959,
+        "mae": 0.0009590546213497388,
+        "rmse": 0.0014052806753116287,
+        "cosine_sim": 0.999997896235018,
+        "min_cosine_sim": 0.9999976924927295
+      },
+      "expert_single_step_v_t": {
+        "max_abs_err": 0.009778022766113281,
+        "rel_max_abs_err": 0.002689803577179038,
+        "mae": 0.0013632925093043013,
+        "rmse": 0.0017369921165368458,
+        "cosine_sim": 0.9999985538220371,
+        "min_cosine_sim": 0.9999983754511637
+      },
+      "actions_10step": {
+        "max_abs_err": 0.04392051696777344,
+        "rel_max_abs_err": 0.016219145737133765,
+        "mae": 0.0005323989289013298,
+        "rmse": 0.0015319260525852088,
+        "cosine_sim": 0.9999834470512026,
+        "min_cosine_sim": 0.9999543901138598
+      },
+      "prefix_pad_masks_exact_match": true
+    },
+    "acceptance": {
+      "thresholds": {
+        "actions_cosine_sim": 0.999
+      },
+      "passed_accuracy": true,
+      "jetson_orin_nano_8gb_ok": true,
+      "jetson_mem_budget_mb": 8192.0,
+      "jetson_safe_limit_mb": 6144.0,
+      "onnx_disk_size_mb": 751.57,
+      "est_jetson_total_mb": 1795.07
+    }
+  },
+  "baseline_comparison": {
+    "pytorch_fp32_cuda": {
+      "baseline_mean_ms": 243.054,
+      "onnx_mean_ms": 85.983,
+      "speedup_vs_baseline": 2.827,
+      "rss_reduction_mb": 3149.99,
+      "vram_reduction_mb": -175.48
+    },
+    "pytorch_bf16_cuda": {
+      "baseline_mean_ms": 199.405,
+      "onnx_mean_ms": 85.983,
+      "speedup_vs_baseline": 2.319,
+      "rss_reduction_mb": 3892.42,
+      "vram_reduction_mb": -1091.67
+    }
+  }
+}

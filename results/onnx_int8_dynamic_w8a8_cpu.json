@@ -1,0 +1,126 @@
+{
+  "model_repo_id": "lerobot/smolvla_base",
+  "model_revision": "5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6",
+  "ref_cache_path": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/datasets/held_out/smolvla_ref_batches.pt",
+  "num_batches": 8,
+  "batch_size": 1,
+  "seeds_used": [
+    11,
+    23,
+    37,
+    41,
+    53,
+    111,
+    123,
+    137
+  ],
+  "onnx_eval": {
+    "backend": "onnx_int8_cpu",
+    "onnx_dir": "/home/chris/dev/mine/models/.work/hf-factory/track_b_robotics/artifacts/smolvla_onnx_int8",
+    "onnx_files": {
+      "vision": "smolvla_vision_encoder.onnx",
+      "prefix": "smolvla_vlm_prefix.onnx",
+      "expert": "smolvla_action_expert_step.onnx"
+    },
+    "precision": "int8",
+    "device": "cpu",
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "io_binding": false,
+    "warmup_runs": 1,
+    "timed_runs": 3,
+    "latency": {
+      "mean_ms": 3697.407,
+      "std_ms": 169.931,
+      "p50_ms": 3612.029,
+      "p95_ms": 3902.379,
+      "min_ms": 3545.55,
+      "max_ms": 3934.64
+    },
+    "breakdown_ms": {
+      "vision_mean_ms": 2382.91,
+      "prefix_mean_ms": 357.214,
+      "expert_10steps_mean_ms": 957.283,
+      "expert_per_step_mean_ms": 95.728
+    },
+    "throughput": {
+      "chunks_per_sec": 0.27,
+      "control_actions_per_sec": 13.5
+    },
+    "memory": {
+      "rss_start_mb": 693.98,
+      "rss_peak_mb": 2112.51,
+      "rss_delta_mb": 1418.54,
+      "process_ru_maxrss_mb": 2106.84,
+      "nvml_gpu_start_mb": null,
+      "nvml_gpu_peak_mb": null,
+      "nvml_gpu_delta_mb": null,
+      "rss_after_load_mb": 1288.82,
+      "onnx_disk_size_mb": 517.73
+    },
+    "accuracy_vs_fp32_ref": {
+      "vision_image_embeddings": {
+        "max_abs_err": 229.30123901367188,
+        "rel_max_abs_err": 0.10269881881110884,
+        "mae": 14.716053881105903,
+        "rmse": 20.104544451796755,
+        "cosine_sim": 0.9896817091095227,
+        "min_cosine_sim": 0.9889585646511202
+      },
+      "prefix_past_keys": {
+        "max_abs_err": 4.003211975097656,
+        "rel_max_abs_err": 0.22027304237108297,
+        "mae": 0.11335565743392355,
+        "rmse": 0.15706461801367355,
+        "cosine_sim": 0.9960019328181803,
+        "min_cosine_sim": 0.9956068110730137
+      },
+      "prefix_past_values": {
+        "max_abs_err": 1.683811515569687,
+        "rel_max_abs_err": 0.33073404358744024,
+        "mae": 0.07944520706929178,
+        "rmse": 0.11208803807411769,
+        "cosine_sim": 0.9851916797174332,
+        "min_cosine_sim": 0.9841600731273661
+      },
+      "expert_single_step_v_t": {
+        "max_abs_err": 0.07460880279541016,
+        "rel_max_abs_err": 0.01991856055218023,
+        "mae": 0.012519250238310633,
+        "rmse": 0.01586023919151091,
+        "cosine_sim": 0.9998771534755538,
+        "min_cosine_sim": 0.9998611106146504
+      },
+      "actions_10step": {
+        "max_abs_err": 0.5315282791852951,
+        "rel_max_abs_err": 0.23684929880806996,
+        "mae": 0.017332282007922688,
+        "rmse": 0.04185363663259341,
+        "cosine_sim": 0.9876068633926849,
+        "min_cosine_sim": 0.9559544677401277
+      },
+      "prefix_pad_masks_exact_match": true
+    },
+    "acceptance": {
+      "thresholds": {
+        "actions_cosine_sim": 0.995
+      },
+      "passed_accuracy": false,
+      "jetson_orin_nano_8gb_ok": true,
+      "jetson_mem_budget_mb": 8192.0,
+      "jetson_safe_limit_mb": 6144.0,
+      "onnx_disk_size_mb": 517.73,
+      "est_jetson_total_mb": 1384.37
+    }
+  },
+  "baseline_comparison": {
+    "pytorch_fp32_cpu": {
+      "baseline_mean_ms": 1979.846,
+      "onnx_mean_ms": 3697.407,
+      "speedup_vs_baseline": 0.535,
+      "rss_reduction_mb": 3834.99,
+      "vram_reduction_mb": null
+    }
+  }
+}
