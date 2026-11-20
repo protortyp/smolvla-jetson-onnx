@@ -1,5 +1,7 @@
 # SmolVLA Jetson ONNX (`protortyp/smolvla-jetson-onnx`)
 
+[Interactive Explorer Space](https://huggingface.co/spaces/christianengel/smolvla-jetson-onnx-demo)
+
 Static ONNX export, mixed FP16 / W8A32 INT8, and PyTorch-free zero-copy CUDA I/O-Binding runner for [`lerobot/smolvla_base`](https://huggingface.co/lerobot/smolvla_base/tree/5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6) (`Apache-2.0`). Weights (`fp16/`, `int8/`, `fp32/`): [`christianengel/smolvla-jetson-onnx`](https://huggingface.co/christianengel/smolvla-jetson-onnx).
 
 RTX 3090 (`8` batches, `B=1`, `3x512x512`, `10` steps): FP16 `SmolVLAOnnxRunner` hits **78.17 ms** (**639.6 actions/s**; **3.11x** vs PT FP32 CUDA, **2.55x** vs BF16 CUDA), **-3.12–3.86 GB** peak RSS, `0.999983` cosine (BF16: `0.999975`).
